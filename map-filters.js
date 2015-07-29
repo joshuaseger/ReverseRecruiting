@@ -20,7 +20,7 @@ function UpdateColleges() {
 	$('#headCoach').text(college.headCoach);
 	$('#coachPhone').text(college.coachPhone);
 	$('#nickname').text(college.nickname);
-	$('#rpiRanking').text(college.rpiRanking);
+	$('#rpiRanking').text(college.rpiRanking.split(':')[1]);
 	$('#rosterDistribution').text(college.rosterDistribution);
 	$('#goalsFor').text(college.goalsFor);
 	$('#goalsAgainst').text(college.goalsAgainst);
@@ -55,9 +55,18 @@ function filterByState() {
     }
    
     if (filtered.length >= 0 && regions.length >= 1) {
-        colleges = filtered;
+        colleges = filtered.sort(sortByWinPercentage);
     } else {  
-        colleges = data;
+        colleges = data.sort(sortByWinPercentage);
     }
     UpdateColleges();
+}
+
+function sortByWinPercentage(a, b)
+{
+  if (a.winPercent < b.winPercent)
+    return 1;
+  if (a.winPercent > b.winPercent)
+    return -1;
+  return 0;
 }
