@@ -84,7 +84,7 @@
 	$(function(){
 		$('#map').vectorMap({
 			map: 'us_lcc_en',
-			backgroundColor: "#818A8A",
+			backgroundColor: "#FFF",
 			zoomOnScroll: false,
 			regionsSelectable: true,
 			markers: [
@@ -92,6 +92,9 @@
 			],
 			regionStyle:
 			{
+				initial: {
+					fill: '#818A8A'
+				},
 				selected: {
 					fill: '#FF6600'
 				}
