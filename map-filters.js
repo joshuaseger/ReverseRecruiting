@@ -31,7 +31,7 @@ function filterByState() {
             }
         }
     }
-    if (filtered.length >= 0) {
+    if (filtered.length > 0) {
         colleges = filtered;
     } else {
         colleges = data;
