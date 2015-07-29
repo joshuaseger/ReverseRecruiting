@@ -3,11 +3,19 @@
 <head>
 	<title>Reverse Recruiting</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-aea-en.js"></script>
+<<<<<<< HEAD
+	<script src="data.js"></script>
+	<script src="map-filters.js"></script>
+	
+=======
+	<script src="js/jquery-ui.min.js"></script>
+	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
+>>>>>>> origin/master
 </head>
 
 <body>
@@ -23,29 +31,51 @@
 			<!-- columns -->
 			<div class="col-md-2">
 				<!-- filter criteria -->
-				<h3>title uno</h3>
-				<label class="checkbox">
-					<input type="checkbox" value="check1">
-					checkbox uno
-				</label>
-				<label class="checkbox">
-					<input type="checkbox" value="check2">
-					checkbox dos
-				</label>
+				<h3>Filters</h3>
+				<span>Conference:</span>
+				<select>
+					<option>Conference 1</option>
+					<option>Conference 2</option>
+					<option>Conference 3</option>
+					<option>Conference 4</option>
+				</select>
+				<div id="selected-conferences">
+				</div>
+				<p>
+					<label for="acceptance-rate">Acceptance Rate:</label>
+					<input type="text" id="acceptance-rate" readonly style="border:0; color:#f6931f; font-weight:bold;">
+				</p>
+				<div id="acceptance-slider"></div>
+				<p>
+					<label for="win-percent">Win Percentage:</label>
+					<input type="text" id="win-percent" readonly style="border:0; color:#f6931f; font-weight:bold;">
+				</p>
+				<div id="wins-slider"></div>
+				<button type="button" class="btn btn-default" value="submit">Filter</button>
 			</div>
-
+			
 			<div id="map" class="col-md-8" style="height:400px;">
 				<!-- map -->
-				<p>this</p>
 			</div>
 
 			<div class="col-md-2">
 				<!--list of schools -->
-				<p>is text</p>
+				
+				<div id="collegeOutput">
+					<p>
+					schools
+					</p>
+				</div>
+
 			</div>
+		</div>
+		<div class="row">
+			<!-- specific school information -->
+			<p>some school info here</p>
 		</div>
 	</div>
 	<script>
+<<<<<<< HEAD
     $(function(){
       $('#map').vectorMap({
       	map: 'us_aea_en',
@@ -63,6 +93,54 @@
       });    
   });
   </script>
+  <script>
+		for (i=0; i < colleges.length; i++){
+			var name = colleges[i].schoolName;
+			console.log(name);
+			$("#collegeOutput").append("<p>"+name+"</p>"+"<br>");
+	}
+	</script>
+=======
+	$(function(){
+		$('#map').vectorMap({
+			map: 'us_aea_en',
+			zoomOnScroll: false,
+			regionsSelectable: true,
+			regionStyle:
+			{
+				selected: {
+					fill: '#FF6600'
+				}
+			},
+			onRegionSelected: function(e, code, isSelected, selectedRegions) {
+				alert('selected regions are: ' + selectedRegions.toString());
+			}
+		});    
+		$( "#acceptance-slider" ).slider({
+			range: true,
+			min: 0,
+			max: 100,
+			values: [ 25, 75 ],
+			slide: function( event, ui ) {
+				$( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
+			}
+		});
+		$( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
+			"% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
+		$( "#wins-slider" ).slider({
+			range: true,
+			min: 0,
+			max: 100,
+			values: [ 25, 75 ],
+			slide: function( event, ui ) {
+				$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
+			}
+		});
+		$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
+			"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
+	});
+</script>
+>>>>>>> origin/master
 </body>
 </html>
 
