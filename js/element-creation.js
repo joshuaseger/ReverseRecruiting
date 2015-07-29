@@ -46,3 +46,35 @@ function createSliders() {
 	$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
 		"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
 }
+
+function createPieChart() {
+    $('#rosterDistribution').highcharts({
+            chart: {
+            	backgroundColor: null,
+                type: 'pie'
+            },
+            credits: {
+            	enabled: false
+            },
+            colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
+            tooltip: {
+                pointFormat: '<b>{point.y}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%, 50%'],
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y}',
+                    }
+                }
+            },
+            title: {
+                text: ''
+            },
+            series: [{
+                name: "Roster Distribution"
+            }]
+        });
+}

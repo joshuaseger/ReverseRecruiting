@@ -13,6 +13,8 @@
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
 	<script src="js/element-creation.js"></script>
 
+	<script src="js/highcharts.js"></script>
+
 </head>
 
 <body>
@@ -102,6 +104,7 @@
 							<li>Goals For: <span id="goalsFor"></span></li>
 							<li>Goals Against: <span id="goalsAgainst"></span></li>
 						</ul>
+						<div id="rosterDistribution"></div>
 					</div>
 				</div>
 				<div class="col-md-5" id="infoColumnRight">
@@ -131,6 +134,7 @@
 $(function(){
 	createMap();
 	createSliders();
+	createPieChart();
 });
 </script>
 
