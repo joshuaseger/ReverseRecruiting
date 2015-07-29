@@ -8,19 +8,11 @@
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-aea-en.js"></script>
-<<<<<<< HEAD
-<<<<<<< HEAD
 	<script src="data.js"></script>
 	<script src="map-filters.js"></script>
-	
-=======
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
->>>>>>> origin/master
-=======
-	<script src="js/jquery-ui.min.js"></script>
-	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
->>>>>>> origin/master
+
 </head>
 
 <body>
@@ -79,26 +71,7 @@
 			<p>some school info here</p>
 		</div>
 	</div>
-	<script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    $(function(){
-      $('#map').vectorMap({
-      	map: 'us_aea_en',
-      	zoomOnScroll: false,
-      	regionsSelectable: true,
-      	regionStyle:
-      	{
-      		selected: {
-      			fill: '#FF6600'
-      		}
-      	},
-      	onRegionSelected: function(e, code, isSelected, selectedRegions) {
-      		alert('selected regions are: ' + selectedRegions.toString());
-      	}
-      });    
-  });
-  </script>
+
   <script>
 		for (i=0; i < colleges.length; i++){
 			var name = colleges[i].schoolName;
@@ -106,9 +79,8 @@
 			$("#collegeOutput").append("<p>"+name+"</p>"+"<br>");
 	}
 	</script>
-=======
-=======
->>>>>>> origin/master
+
+<script>
 	$(function(){
 		$('#map').vectorMap({
 			map: 'us_aea_en',
@@ -148,10 +120,6 @@
 			"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
 	});
 </script>
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> origin/master
 </body>
 </html>
 
