@@ -72,11 +72,13 @@
 	</div>
 
   <script>
+    function UpdateColleges() {
 		for (i=0; i < colleges.length; i++){
 			var name = colleges[i].schoolName;
-			console.log(name);
 			$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
-	}
+        }
+    }
+    UpdateColleges();
 	</script>
 
 <script>
@@ -99,7 +101,9 @@
 				}
 			},
 			onRegionSelected: function(e, code, isSelected, selectedRegions) {
-				alert('selected regions are: ' + selectedRegions.toString());
+				//alert('selected regions are: ' + selectedRegions.toString());
+                filterByState();
+                UpdateColleges();
 			}
 		});    
 		$( "#acceptance-slider" ).slider({
