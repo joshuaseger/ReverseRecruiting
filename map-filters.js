@@ -3,8 +3,12 @@ function UpdateColleges() {
 	for (i=0; i < colleges.length; i++){
 		var name = colleges[i].schoolName;
 		name = name.split("(")[0];
-		$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
+		$("#collegeOutput").append("<tr><td onClick=verp(colleges[i]);>"+name+"</td></tr>");
     }
+}
+
+function verp(college) {
+    alert(college.schoolName);
 }
 function filterByState() {
 	colleges = [];
