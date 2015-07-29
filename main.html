@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
-	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-aea-en.js"></script>
 	<script src="data.js"></script>
 	<script src="map-filters.js"></script>
+	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-lcc-en.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
 
@@ -83,9 +83,13 @@
 <script>
 	$(function(){
 		$('#map').vectorMap({
-			map: 'us_aea_en',
+			map: 'us_lcc_en',
+			backgroundColor: "#818A8A",
 			zoomOnScroll: false,
 			regionsSelectable: true,
+			markers: [
+			{latLng: [39.1, -84.54], name: 'Cincinatti, Ohio'}
+			],
 			regionStyle:
 			{
 				selected: {
@@ -114,6 +118,9 @@
 			values: [ 25, 75 ],
 			slide: function( event, ui ) {
 				$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
+			},
+			stop: function(event, ui) {
+				alert('kdfsjaldkfj');
 			}
 		});
 		$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
