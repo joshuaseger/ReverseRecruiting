@@ -92,7 +92,6 @@
 			onRegionSelected: function(e, code, isSelected, selectedRegions) {
 				//alert('selected regions are: ' + selectedRegions.toString());
                 filterByState();
-                UpdateColleges();
 			}
 		});    
 		$( "#acceptance-slider" ).slider({
@@ -124,6 +123,7 @@
 </script>
 
 <script src="map-filters.js"></script>
+<script>window.onload = UpdateColleges();</script>
 </body>
 </html>
 
