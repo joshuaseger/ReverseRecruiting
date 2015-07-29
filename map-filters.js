@@ -1,5 +1,6 @@
 function UpdateColleges() {
 	$("#collegeOutput").empty();
+	colleges = colleges.sort(sortByWinPercentage);
 	for (i=0; i < colleges.length; i++){
 		var name = colleges[i].schoolName;
 		name = name.split("(")[0];
@@ -62,9 +63,9 @@ function filterByState() {
     }
    
     if (filtered.length >= 0 && regions.length >= 1) {
-        colleges = filtered.sort(sortByWinPercentage);
+        colleges = filtered;
     } else {  
-        colleges = data.sort(sortByWinPercentage);
+        colleges = data;
     }
     UpdateColleges();
 }
