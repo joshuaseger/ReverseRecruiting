@@ -93,16 +93,16 @@
 				<div class="col-md-1"></div>
 				<div class="col-md-5" id="infoColumnLeft">
 					<div class="well" style="padding-right:10px">
-						<ul>
-							<li>Conference: <span id="conference"></span></li>
-							<li>Head Coach: <span id="headCoach"></span></li>
-							<li>Coach Phone: <span id="coachPhone"></span></li>
-							<li>Overall Record: <span id="overallRecord"></span></li>
-							<li>Conference Record: <span id="conferenceRecord"></span></li>
-							<li>Win Percentage: <span id="winPercent"></span></li>
-							<li>Conference Ranking: <span id="rpiRanking"></span></li>
-							<li>Goals For: <span id="goalsFor"></span></li>
-							<li>Goals Against: <span id="goalsAgainst"></span></li>
+						<ul style="list-style:none;padding-left:10px">
+							<li><b>Conference: </b><span id="conference"></span></li>
+							<li><b>Head Coach: </b><span id="headCoach"></span></li>
+							<li><b>Coach Phone: </b><span id="coachPhone"></span></li>
+							<li><b>Overall Record: </b><span id="wins" style="color:green"></span> - <span id="losses" style="color:red"></span> - <span id="ties"></span></li>
+							<li><b>Conference Record: </b><span id="winsConference" style="color:green"></span> - <span id="lossesConference" style="color:red"></span> - <span id="tiesConference"></span></li>
+							<li><b>Win Percentage: </b><span id="winPercent"></span></li>
+							<li><b>Conference Ranking: </b><span id="rpiRanking"></span></li>
+							<li><b>Goals For: </b><span id="goalsFor"></span></li>
+							<li><b>Goals Against: </b><span id="goalsAgainst"></span></li>
 						</ul>
 						<div id="rosterDistribution"></div>
 					</div>
@@ -110,24 +110,24 @@
 				<div class="col-md-5" id="infoColumnRight">
 					<div class="well" style="padding-left:10px">
 						<p><span id="description"></span></p>
-						<ul>
-							<li>School Size: <span id="schoolSize"></span></li>
-							<li>Undergrad Population: <span id="undergradPopulation"></span></li>
-							<li>In-State Tuition: <span id="inStateTuition"></span></li>
-							<li>Out-of-State Tuition: <span id="outOfStateTuition"></span></li>
-							<li>Acceptance Level: <span id="acceptanceLevel"></span></li>
-							<li>Acceptance Rate: <span id="acceptanceRate"></span></li>
-							<li>Faculty Ratio: <span id="facultyRatio"></span></li>
+						<ul style="list-style:none;padding-left:10px">
+							<li><b>School Size: </b><span id="schoolSize"></span></li>
+							<li><b>Undergrad Population: </b><span id="undergradPopulation"></span></li>
+							<li><b>In-State Tuition: </b><span id="inStateTuition"></span></li>
+							<li><b>Out-of-State Tuition: </b><span id="outOfStateTuition"></span></li>
+							<li><b>Acceptance Level: </b><span id="acceptanceLevel"></span></li>
+							<li><b>Acceptance Rate: </b><span id="acceptanceRate"></span></li>
+							<li><b>Faculty Ratio: </b><span id="facultyRatio"></span></li>
 							<li><span id="address"></span></li>
-							<li><span id="city"></span></li>
-							<li><span id="state"></span></li>
 							<li><span id="schoolUrl"></span></li>
 						</ul>
 					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <script>
