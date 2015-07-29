@@ -58,7 +58,7 @@
 			<div class="col-md-2">
 				<!--list of schools -->
 				<h3>Schools</h3> 
-				<div style="height:400px;width:95%;overflow-y:auto;cursor:pointer;">
+				<div style="height:400px;overflow-y:auto;cursor:pointer;">
 					<table class="table table-hover" id="collegeOutput"></table>
 				</div>
 
@@ -66,20 +66,21 @@
 		</div>
 		<div class="row" id="schoolInfo">
 			<!-- specific school information -->
-			<p>some school info here</p>
+			<p></p>
 		</div>
 	</div>
 
 	<script>
 	for (i=0; i < colleges.length; i++){
-		var name = colleges[i].schoolName;
+		var name = colleges[i].schoolName.replace("(Mens)","");
 		console.log(name);
 		$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
 	}
 	$("#collegeOutput tr td").click(function(){
+		var name = $(this).text().replace("(Mens)","");
 		$("#collegeOutput tr td").removeClass('active');
 		$(this).addClass('active');
-		$("#schoolInfo p").text($(this).text()); 
+		$("#schoolInfo p").text(name); 
 	});
 	</script>
 
