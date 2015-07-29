@@ -8,7 +8,6 @@
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="data.js"></script>
-	<script src="map-filters.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-lcc-en.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
@@ -60,7 +59,7 @@
 				<h3>Schools</h3> 
 				<div style="height:400px;overflow-y:auto;cursor:pointer;">
 					<table class="table table-hover" id="collegeOutput"></table>
-				</div>
+                </div>
 
 			</div>
 		</div>
@@ -84,7 +83,7 @@
 	});
 	</script>
 
-	<script>
+<script>
 	$(function(){
 		$('#map').vectorMap({
 			map: 'us_lcc_en',
@@ -104,7 +103,8 @@
 				}
 			},
 			onRegionSelected: function(e, code, isSelected, selectedRegions) {
-				alert('selected regions are: ' + selectedRegions.toString());
+				//alert('selected regions are: ' + selectedRegions.toString());
+                filterByState();
 			}
 		});    
 		$( "#acceptance-slider" ).slider({
@@ -134,6 +134,9 @@
 			"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
 	});
 </script>
+
+<script src="map-filters.js"></script>
+<script>window.onload = UpdateColleges();</script>
 </body>
 </html>
 
