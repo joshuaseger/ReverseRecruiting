@@ -58,13 +58,13 @@
 			<div class="col-md-2">
 				<!--list of schools -->
 				<h3>Schools</h3> 
-				<div style="height:400px;width:95%;overflow-y:auto;">
+				<div style="height:400px;width:95%;overflow-y:auto;cursor:pointer;">
 					<table class="table table-hover" id="collegeOutput"></table>
 				</div>
 
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" id="schoolInfo">
 			<!-- specific school information -->
 			<p>some school info here</p>
 		</div>
@@ -76,6 +76,9 @@
 		console.log(name);
 		$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
 	}
+	$("#collegeOutput tr td").click(function(){
+		$("#schoolInfo p").text($(this).text()); 
+	});
 	</script>
 
 	<script>
