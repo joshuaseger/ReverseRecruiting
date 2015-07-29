@@ -77,6 +77,8 @@
 		$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
 	}
 	$("#collegeOutput tr td").click(function(){
+		$("#collegeOutput tr td").removeClass('active');
+		$(this).addClass('active');
 		$("#schoolInfo p").text($(this).text()); 
 	});
 	</script>
