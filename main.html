@@ -4,7 +4,7 @@
 	<title>Reverse Recruiting</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen">
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="data.js"></script>
@@ -58,11 +58,11 @@
 			<div class="col-md-2">
 				<!--list of schools -->
 				
-				<div id="collegeOutput">
-					<p>
-					schools
-					</p>
-				</div>
+				<table class="table table-hover" id="collegeOutput">
+
+				<th>Schools</th>
+
+				</table>
 
 			</div>
 		</div>
@@ -76,7 +76,7 @@
 		for (i=0; i < colleges.length; i++){
 			var name = colleges[i].schoolName;
 			console.log(name);
-			$("#collegeOutput").append("<p>"+name+"</p>"+"<br>");
+			$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
 	}
 	</script>
 
