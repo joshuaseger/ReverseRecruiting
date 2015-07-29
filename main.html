@@ -69,20 +69,6 @@
 		</div>
 	</div>
 
-	<script>
-	for (i=0; i < colleges.length; i++){
-		var name = colleges[i].schoolName.replace("(Mens)","");
-		console.log(name);
-		$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
-	}
-	$("#collegeOutput tr td").click(function(){
-		var name = $(this).text().replace("(Mens)","");
-		$("#collegeOutput tr td").removeClass('active');
-		$(this).addClass('active');
-		$("#schoolInfo p").text(name); 
-	});
-	</script>
-
 <script>
 	$(function(){
 		$('#map').vectorMap({
