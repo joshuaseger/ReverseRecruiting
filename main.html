@@ -3,13 +3,17 @@
 <head>
 	<title>Reverse Recruiting</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap-3.3.5-dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-aea-en.js"></script>
+	<<<<<<< Updated upstream
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
+	=======
+	<script src="slider/js/bootstrap-slider.js"></script>
+	>>>>>>> Stashed changes
 </head>
 
 <body>
@@ -35,21 +39,21 @@
 				</select>
 				<div id="selected-conferences">
 				</div>
-		<p>
-  			<label for="acceptance-rate">Acceptance Rate:</label>
-  			<input type="text" id="acceptance-rate" readonly style="border:0; color:#f6931f; font-weight:bold;">
-		</p>
-		<div id="acceptance-slider"></div>
-		<p>
-  			<label for="win-percent">Win Percentage:</label>
-  			<input type="text" id="win-percent" readonly style="border:0; color:#f6931f; font-weight:bold;">
-		</p>
-		<div id="wins-slider"></div>
+				<p>
+					<label for="acceptance-rate">Acceptance Rate:</label>
+					<input type="text" id="acceptance-rate" readonly style="border:0; color:#f6931f; font-weight:bold;">
+				</p>
+				<div id="acceptance-slider"></div>
+				<p>
+					<label for="win-percent">Win Percentage:</label>
+					<input type="text" id="win-percent" readonly style="border:0; color:#f6931f; font-weight:bold;">
+				</p>
+				<div id="wins-slider"></div>
+				<button type="button" class="btn btn-default" value="submit">Filter</button>
 			</div>
-
+			
 			<div id="map" class="col-md-8" style="height:400px;">
 				<!-- map -->
-				<p>this</p>
 			</div>
 
 			<div class="col-md-2">
@@ -57,47 +61,51 @@
 				<p>is text</p>
 			</div>
 		</div>
+		<div class="row">
+			<!-- specific school information -->
+			<p>some school info here</p>
+		</div>
 	</div>
 	<script>
-    $(function(){
-      $('#map').vectorMap({
-      	map: 'us_aea_en',
-      	zoomOnScroll: false,
-      	regionsSelectable: true,
-      	regionStyle:
-      	{
-      		selected: {
-      			fill: '#FF6600'
-      		}
-      	},
-      	onRegionSelected: function(e, code, isSelected, selectedRegions) {
-      		alert('selected regions are: ' + selectedRegions.toString());
-      	}
-      });    
-      $( "#acceptance-slider" ).slider({
-      range: true,
-      min: 0,
-      max: 100,
-      values: [ 25, 75 ],
-      slide: function( event, ui ) {
-        $( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
-      }
-    });
-    $( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
-      "% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
-    $( "#wins-slider" ).slider({
-      range: true,
-      min: 0,
-      max: 100,
-      values: [ 25, 75 ],
-      slide: function( event, ui ) {
-        $( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
-      }
-    });
-    $( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
-      "% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
-  });
-  </script>
+	$(function(){
+		$('#map').vectorMap({
+			map: 'us_aea_en',
+			zoomOnScroll: false,
+			regionsSelectable: true,
+			regionStyle:
+			{
+				selected: {
+					fill: '#FF6600'
+				}
+			},
+			onRegionSelected: function(e, code, isSelected, selectedRegions) {
+				alert('selected regions are: ' + selectedRegions.toString());
+			}
+		});    
+		$( "#acceptance-slider" ).slider({
+			range: true,
+			min: 0,
+			max: 100,
+			values: [ 25, 75 ],
+			slide: function( event, ui ) {
+				$( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
+			}
+		});
+		$( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
+			"% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
+		$( "#wins-slider" ).slider({
+			range: true,
+			min: 0,
+			max: 100,
+			values: [ 25, 75 ],
+			slide: function( event, ui ) {
+				$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
+			}
+		});
+		$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
+			"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
+	});
+</script>
 </body>
 </html>
 
