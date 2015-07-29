@@ -8,7 +8,7 @@
 	<script src="jquery-2.1.4.min.js"></script>
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
 	<script src="data.js"></script>
-	<script src="map-filters.js"></script>
+	<!--script src="map-filters.js"></script-->
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-lcc-en.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
@@ -75,9 +75,10 @@
   <script>
 		for (i=0; i < colleges.length; i++){
 			var name = colleges[i].schoolName;
+			name = name.split("(")[0];
 			console.log(name);
 			$("#collegeOutput").append("<tr><td>"+name+"</td></tr>");
-	}
+		}
 	</script>
 
 <script>
