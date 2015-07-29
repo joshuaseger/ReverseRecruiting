@@ -8,6 +8,8 @@ function UpdateColleges() {
     $("td").click(function(e){
 	var index = $(this).data('index');
 	var college = colleges[index];
+	$("td").removeClass('active');
+	$(this).addClass('active');
 	$('#schoolName').text(college.schoolName);
 	$('#conference').text(college.conference);
 	$('#overallRecord').text(college.overallRecord);
@@ -35,9 +37,6 @@ function UpdateColleges() {
 });
 }
 
-function verp(college) {
-    alert(college.schoolName);
-}
 function filterByState() {
 	colleges = [];
 	var filtered = [];
