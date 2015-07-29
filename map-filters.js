@@ -14,7 +14,14 @@ function UpdateColleges() {
 	$('#conference').text(college.conference);
 	$('#overallRecord').text(college.overallRecord);
 	$('#winPercent').text(college.winPercent);
-	$('#conferenceRecord').text(college.conferenceRecord);
+	var overallRecord = college.overallRecord.split("-");
+	$('#wins').text(overallRecord[0]);
+	$('#losses').text(overallRecord[1]);
+	$('#ties').text(overallRecord[2]);
+	var conferenceRecord = college.conferenceRecord.split("-");
+	$('#winsConference').text(conferenceRecord[0]);
+	$('#lossesConference').text(conferenceRecord[1]);
+	$('#tiesConference').text(conferenceRecord[2]);
 	$('#state').text(college.state);
 	$('#city').text(college.city);
 	$('#headCoach').text(college.headCoach);
@@ -60,6 +67,11 @@ function filterByState() {
         colleges = data.sort(sortByWinPercentage);
     }
     UpdateColleges();
+}
+
+function filterByConference(){
+	var filtered = [];
+	var conference = document.getElementById('#conference').getSelected;
 }
 
 function sortByWinPercentage(a, b)
