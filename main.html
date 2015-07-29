@@ -4,6 +4,10 @@
 	<title>Reverse Recruiting</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+	<script src="jquery-2.1.4.min.js"></script>
+	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-2.0.2.min.js"></script>
+	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-aea-en.js"></script>
 </head>
 
 <body>
@@ -30,7 +34,7 @@
 				</label>
 			</div>
 
-			<div class="col-md-8">
+			<div id="map" class="col-md-8" style="height:400px;">
 				<!-- map -->
 				<p>this</p>
 			</div>
@@ -41,6 +45,24 @@
 			</div>
 		</div>
 	</div>
+	<script>
+    $(function(){
+      $('#map').vectorMap({
+      	map: 'us_aea_en',
+      	zoomOnScroll: false,
+      	regionsSelectable: true,
+      	regionStyle:
+      	{
+      		selected: {
+      			fill: '#FF6600'
+      		}
+      	},
+      	onRegionSelected: function(e, code, isSelected, selectedRegions) {
+      		alert('selected regions are: ' + selectedRegions.toString());
+      	}
+      });    
+  });
+  </script>
 </body>
 </html>
 
