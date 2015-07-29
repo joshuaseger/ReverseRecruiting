@@ -34,6 +34,7 @@ function UpdateColleges() {
 	$('#facultyRatio').text(college.facultyRatio);
 	$('#acceptanceLevel').text(college.acceptanceLevel);
 	$('#acceptanceRate').text(college.acceptanceRate);
+    $('#allSchoolInfo').removeClass('hide');
 });
 }
 
@@ -60,7 +61,3 @@ function filterByState() {
     }
     UpdateColleges();
 }
-
-
-
-
