@@ -3,7 +3,7 @@ function UpdateColleges() {
 	for (i=0; i < colleges.length; i++){
 		var name = colleges[i].schoolName;
 		name = name.split("(")[0];
-		$("#collegeOutput").append("<tr><td onClick=verp(colleges[i]);>"+name+"</td></tr>");
+		$("#collegeOutput").append("<tr><td data-index"+i+">"+name+"</td></tr>");
     }
 }
 
@@ -33,6 +33,33 @@ function filterByState() {
     }
     UpdateColleges();
 }
-// recalculate filtered
+
+$("#collegeOutput tr td").click(function(){
+	var index = $(this).data('index');
+	var college = colleges[index];
+	$('#schoolName').text(college.schoolName);
+	$('#overallRecord').text(college.overallRecord);
+	$('#winPercent').text(college.winPercent);
+	$('#conferenceRecord').text(college.conferenceRecord);
+	$('#state').text(college.state);
+	$('#city').text(college.city);
+	$('#headCoach').text(college.headCoach);
+	$('#coachPhone').text(college.coachPhone);
+	$('#nickname').text(college.nickname);
+	$('#rpiRanking').text(college.rpiRanking);
+	$('#rosterDistribution').text(college.rosterDistribution);
+	$('#goalsFor').text(college.goalsFor);
+	$('#goalsAgainst').text(college.goalsAgainst);
+	$('#description').text(college.description);
+	$('#schoolUrl').text(college.schoolUrl);
+	$('#schoolSize').text(college.schoolSize);
+	$('#undergradPopulation').text(college.undergradPopulation);
+	$('#inStateTuition').text(college.inStateTuition);
+	$('#outOfStateTuition').text(college.outOfStateTuition);
+	$('#address').text(college.address);
+	$('#facultyRatio').text(college.facultyRatio);
+	$('#acceptanceLevel').text(college.acceptanceLevel);
+	$('#acceptanceRate').text(college.acceptanceRate);
+})
 
 
