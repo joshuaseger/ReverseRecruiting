@@ -1,6 +1,5 @@
 function UpdateColleges() {
 	$("#collegeOutput").empty();
-	$("#collegeOutput").append("<th>Schools</th>");
 	for (i=0; i < colleges.length; i++){
 		var name = colleges[i].schoolName;
 		name = name.split("(")[0];
