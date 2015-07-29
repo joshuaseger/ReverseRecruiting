@@ -6,6 +6,10 @@ function UpdateColleges() {
 		$("#collegeOutput").append("<tr><td data-index"+i+">"+name+"</td></tr>");
     }
 }
+
+function verp(college) {
+    alert(college.schoolName);
+}
 function filterByState() {
 	colleges = [];
 	var filtered = [];

@@ -11,6 +11,7 @@
 	<script src="jquery-jvectormap-2.0.2/jquery-jvectormap-us-lcc-en.js"></script>
 	<script src="js/jquery-ui.min.js"></script>
 	<link rel='stylesheet' href="css/jquery-ui.min.css"></script>
+	<script src="js/element-creation.js"></script>
 
 </head>
 
@@ -30,10 +31,28 @@
 				<h3>Filters</h3>
 				<span>Conference:</span>
 				<select>
-					<option>Conference 1</option>
-					<option>Conference 2</option>
-					<option>Conference 3</option>
-					<option>Conference 4</option>
+					<option>America East</option>
+					<option>American Athletic</option>
+					<option>Atlantic 10</option>
+                    <option>Atlantic Coast</option>
+                    <option>Atlantic Sun</option>
+                    <option>Big East</option>
+                    <option>Big South</option>
+                    <option>Big Ten</option>
+                    <option>Big West</option>
+                    <option>Colonial</option>
+                    <option>Conference USA</option>
+                    <option>Metro Atlantic</option>
+                    <option>Mid-American</option>
+                    <option>Missouri Valley</option>
+                    <option>Northeast</option>
+                    <option>Pacific 12</option>
+                    <option>Patriot League</option>
+                    <option>Southern</option>
+                    <option>Summit League</option>
+                    <option>Sun Belt</option>
+                    <option>West Coast</option>
+                    <option>Western Athletic</option>
 				</select>
 				<div id="selected-conferences">
 				</div>
@@ -71,53 +90,8 @@
 
 <script>
 	$(function(){
-		$('#map').vectorMap({
-			map: 'us_lcc_en',
-			backgroundColor: "#FFF",
-			zoomOnScroll: false,
-			regionsSelectable: true,
-			markers: [
-			{latLng: [39.1, -84.54], name: 'Cincinatti, Ohio'}
-			],
-			regionStyle:
-			{
-				initial: {
-					fill: '#818A8A'
-				},
-				selected: {
-					fill: '#FF6600'
-				}
-			},
-			onRegionSelected: function(e, code, isSelected, selectedRegions) {
-				//alert('selected regions are: ' + selectedRegions.toString());
-                filterByState();
-			}
-		});    
-		$( "#acceptance-slider" ).slider({
-			range: true,
-			min: 0,
-			max: 100,
-			values: [ 25, 75 ],
-			slide: function( event, ui ) {
-				$( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
-			}
-		});
-		$( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
-			"% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
-		$( "#wins-slider" ).slider({
-			range: true,
-			min: 0,
-			max: 100,
-			values: [ 25, 75 ],
-			slide: function( event, ui ) {
-				$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
-			},
-			stop: function(event, ui) {
-				alert('kdfsjaldkfj');
-			}
-		});
-		$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
-			"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
+		createMap();
+		createSliders();
 	});
 </script>
 
