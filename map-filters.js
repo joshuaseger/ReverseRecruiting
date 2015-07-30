@@ -3,6 +3,24 @@ function UpdateColleges() {
 	colleges = colleges.sort(sortByWinPercentage);
     var map = $('#map').vectorMap('get', 'mapObject');
     map.removeAllMarkers();
+	if($('#sortSchools').val() == 'Win Percent (high to low)'){
+		colleges = colleges.sort(sortByWinPercentage);
+	}
+	if($('#sortSchools').val() == 'Win Percent (low to high)'){
+		colleges = colleges.sort(sortByWinPercentage).reverse();
+	}
+	if($('#sortSchools').val() == 'In-State Tuition (high to low)'){
+		colleges = colleges.sort(sortByInStateTuition);
+	}
+	if($('#sortSchools').val() == 'In-State Tuition (low to high)'){
+		colleges = colleges.sort(sortByInStateTuition).reverse();
+	}
+	if($('#sortSchools').val() == 'Out-of-State Tuition (high to low)'){
+		colleges = colleges.sort(sortByOutOfStateTuition);
+	}
+	if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
+		colleges = colleges.sort(sortByOutOfStateTuition).reverse();
+	}
 	for (i=0; i < colleges.length; i++){
 		var collegeName = colleges[i].schoolName;
 		collegeName = collegeName.split("(")[0];
@@ -151,13 +169,49 @@ colleges = _.filter(colleges, function(college){
 }
 }
 
-
+$('#sortSchools').change(function(){
+UpdateColleges();
+});
 
 function sortByWinPercentage(a, b)
 {
   if (a.winPercent < b.winPercent)
     return 1;
 if (a.winPercent > b.winPercent)
+    return -1;
+return 0;
+}
+
+function sortByInStateTuition(a, b)
+{
+	var a = a.inStateTuition.slice(1,a.inStateTuition.length);
+	a = a.split(',');
+	a =  a[0] + a[1];
+	a = parseFloat(a);
+	var b = b.inStateTuition.slice(1,b.inStateTuition.length);
+	b = b.split(',');
+	b =  b[0] + b[1];
+	b = parseFloat(b);
+  if (a < b)
+    return 1;
+if (a > b)
+    return -1;
+return 0;
+}
+
+function sortByOutOfStateTuition(a, b)
+{
+	var a = a.outOfStateTuition.slice(1,a.outOfStateTuition.length);
+	a = a.split(',');
+	a =  a[0] + a[1];
+	a = parseFloat(a);
+	var b = b.outOfStateTuition.slice(1,b.outOfStateTuition.length);
+	b = b.split(',');
+	b =  b[0] + b[1];
+	b = parseFloat(b);
+  if (a < b)
+    return 1;
+if (a > b)
     return -1;
 return 0;
 }

@@ -79,13 +79,24 @@
 
 			</div>
 			
-			<div id="map" class="col-md-8" style="height:400px;">
+			<div id="map" class="col-md-8" style="padding:20px 0px 20px 0px;height:400px;">
 				<!-- map -->
 			</div>
 
 			<div class="col-md-2">
 				<!--list of schools -->
-				<h3>Schools</h3> 
+				<h3>Schools</h3>
+				<small>filter by:</small>
+				<select id="sortSchools" style="width:100%">
+					<option>Win Percent (high to low)</option>
+					<option>Win Percent (low to high)</option>
+					<option>In-State Tuition (high to low)</option>
+					<option>In-State Tuition (low to high)</option>
+					<option>Out-of-State Tuition (high to low)</option>
+					<option>Out-of-State Tuition (low to high)</option>
+				</select> 
+				<br>
+				<br>
 				<div style="height:400px;overflow-y:auto;cursor:pointer;">
 					<table class="table table-hover" id="collegeOutput"></table>
 				</div>
@@ -114,7 +125,7 @@
 							<li><b>Goals For: </b><span id="goalsFor"></span></li>
 							<li><b>Goals Against: </b><span id="goalsAgainst"></span></li>
 						</ul>
-						<div id="rosterDistribution" style="width:400px;"></div>
+						<div id="rosterDistribution" style="margin:auto;width:400px"></div>
 					</div>
 				</div>
 				<div class="col-md-5" id="infoColumnRight">
@@ -135,8 +146,8 @@
 							<li><a href="" id="schoolUrlLink" target="_blank"><span id="schoolUrl"></span></a></li>
 						</ul>
 					</div>
-
 				</div>
+				<div class="col-md-1"></div>
 			</div>
 		</div>
 	</div>

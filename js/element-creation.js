@@ -63,35 +63,37 @@ function createSliders() {
 }
 
 function createPieChart() {
-	$('#rosterDistribution').highcharts({
-		chart: {
-			backgroundColor: null,
-			type: 'pie'
-		},
-		credits: {
-			enabled: false
-		},
-		colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
-		tooltip: {
-			enabled: false
-		},
-		plotOptions: {
-			pie: {
-				shadow: false,
-				center: ['50%, 50%'],
-				dataLabels: {
-					enabled: true,
-					format: '<b>{point.name}</b>: {point.y}',
-					distance:-50,
-					color: 'white'
-				}
-			}
-		},
-		title: {
-			text: 'Roster Distribution'
-		},
-		series: [{
-			name: "Roster Distribution"
-		}]
-	});
+    $('#rosterDistribution').highcharts({
+            chart: {
+            	backgroundColor: null,
+                type: 'pie'
+            },
+            credits: {
+            	enabled: false
+            },
+            colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
+            tooltip: {
+                enabled: false
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%, 50%'],
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.y}',
+                        distance:-50,
+                        color: 'white',
+                        style: { fontFamily: 'Helvetica' }
+                    }
+                }
+            },
+            title: {
+                text: 'Roster Distribution',
+                style: {fontFamily: 'Helvetica'}
+            },
+            series: [{
+                name: "Roster Distribution"
+            }]
+        });
 }
