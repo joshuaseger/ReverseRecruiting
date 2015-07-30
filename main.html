@@ -14,6 +14,7 @@
 	<script src="js/element-creation.js"></script>
 	<script src="js/highcharts.js"></script>
 	<script src="underscore-min.js"></script>
+	<script src="map-filters.js"></script>
 </head>
 <body>
 	<div class="container" style="padding-bottom:50px">
@@ -147,11 +148,9 @@ $(function(){
 	createMap();
 	createSliders();
 	createPieChart();
+	UpdateColleges();
 });
 </script>
-
-<script src="map-filters.js"></script>
-<script>window.onload = UpdateColleges();</script>
 </body>
 </html>
 

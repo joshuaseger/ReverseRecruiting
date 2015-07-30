@@ -1,10 +1,13 @@
 function UpdateColleges() {
 	$("#collegeOutput").empty();
 	colleges = colleges.sort(sortByWinPercentage);
+    var map = $('#map').vectorMap('get', 'mapObject');
+    map.removeAllMarkers();
 	for (i=0; i < colleges.length; i++){
-		var name = colleges[i].schoolName;
-		name = name.split("(")[0];
-          $("#collegeOutput").append("<tr><td data-index="+i+">"+name+"</td></tr>");
+		var collegeName = colleges[i].schoolName;
+		collegeName = collegeName.split("(")[0];
+          $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
+        map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
       }
       $("td").click(function(e){
          var index = $(this).data('index');

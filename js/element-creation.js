@@ -4,6 +4,11 @@ function createMap() {
 		backgroundColor: "#FFF",
 		zoomOnScroll: false,
 		regionsSelectable: true,
+		markerStyle: {
+			initial: {
+				fill: '#232A31'
+			}
+		},
 		regionStyle:
 		{
 			initial: {
@@ -45,48 +50,48 @@ function createSliders() {
 		"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
 
 	$( "#undergrad-pop" ).slider({
-	range: true,
-	min: 500,
-	max: 45000,
-	values: [ 500, 45000 ],
-	slide: function( event, ui ) {
-		$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
-	},
+		range: true,
+		min: 500,
+		max: 45000,
+		values: [ 500, 45000 ],
+		slide: function( event, ui ) {
+			$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
+		},
 	});
 	$( "#undergrad-population" ).val( $( "#undergrad-pop" ).slider( "values", 0 ) +
 		" - " + $( "#undergrad-pop" ).slider( "values", 1 ));
 }
 
 function createPieChart() {
-    $('#rosterDistribution').highcharts({
-            chart: {
-            	backgroundColor: null,
-                type: 'pie'
-            },
-            credits: {
-            	enabled: false
-            },
-            colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
-            tooltip: {
-                enabled: false
-            },
-            plotOptions: {
-                pie: {
-                    shadow: false,
-                    center: ['50%, 50%'],
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}',
-                        distance:-50,
-                        color: 'white'
-                    }
-                }
-            },
-            title: {
-                text: 'Roster Distribution'
-            },
-            series: [{
-                name: "Roster Distribution"
-            }]
-        });
+	$('#rosterDistribution').highcharts({
+		chart: {
+			backgroundColor: null,
+			type: 'pie'
+		},
+		credits: {
+			enabled: false
+		},
+		colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
+		tooltip: {
+			enabled: false
+		},
+		plotOptions: {
+			pie: {
+				shadow: false,
+				center: ['50%, 50%'],
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.y}',
+					distance:-50,
+					color: 'white'
+				}
+			}
+		},
+		title: {
+			text: 'Roster Distribution'
+		},
+		series: [{
+			name: "Roster Distribution"
+		}]
+	});
 }
