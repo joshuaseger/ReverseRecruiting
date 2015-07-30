@@ -33,7 +33,7 @@ function UpdateColleges() {
          $("td").removeClass('active');
          $(this).addClass('active');
          var schoolName = college.schoolName.split("(")[0];
-         var instaQuery = schoolName.replace(/\s/g, '') + 'soccer';
+         var instaQuery = schoolName.replace(/\s/g, '') + 'Soccer';
          console.log(instaQuery);
          $('#instafeed').empty();
          var feed = new Instafeed({
@@ -43,6 +43,7 @@ function UpdateColleges() {
 			clientId: "5a029a80a3174286850a72c285d5eed3"
 		});
 		feed.run()
+		 $('#instaLabel').text("#" + instaQuery);
          $('#schoolName').text(schoolName);
          $('#conference').text(college.conference);
          $('#overallRecord').text(college.overallRecord);
@@ -73,7 +74,7 @@ function UpdateColleges() {
          $('#address').text(college.address);
          $('#facultyRatio').text(college.facultyRatio);
          $('#acceptanceLevel').text(college.acceptanceLevel);
-         $('#acceptanceRate').text(college.acceptanceRate);
+         $('#acceptanceRate').text(college.acceptanceRate + "%");
          $('#allSchoolInfo').removeClass('hide');
          $('html, body').animate({
         scrollTop: $("#allSchoolInfo").offset().top
