@@ -1,87 +1,88 @@
 function UpdateColleges() {
-	$("#collegeOutput").empty();
-	colleges = colleges.sort(sortByWinPercentage);
+    $("#collegeOutput").empty();
+    colleges = colleges.sort(sortByWinPercentage);
     var map = $('#map').vectorMap('get', 'mapObject');
     map.removeAllMarkers();
-	if($('#sortSchools').val() == 'Win Percent (high to low)'){
-		colleges = colleges.sort(sortByWinPercentage);
-	}
-	if($('#sortSchools').val() == 'Win Percent (low to high)'){
-		colleges = colleges.sort(sortByWinPercentage).reverse();
-	}
-	if($('#sortSchools').val() == 'In-State Tuition (high to low)'){
-		colleges = colleges.sort(sortByInStateTuition);
-	}
-	if($('#sortSchools').val() == 'In-State Tuition (low to high)'){
-		colleges = colleges.sort(sortByInStateTuition).reverse();
-	}
-	if($('#sortSchools').val() == 'Out-of-State Tuition (high to low)'){
-		colleges = colleges.sort(sortByOutOfStateTuition);
-	}
-	if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
-		colleges = colleges.sort(sortByOutOfStateTuition).reverse();
-	}
-	for (i=0; i < colleges.length; i++){
-		var collegeName = colleges[i].schoolName;
-		collegeName = collegeName.split("(")[0];
+    if($('#sortSchools').val() == 'Win Percent (high to low)'){
+      colleges = colleges.sort(sortByWinPercentage);
+  }
+  if($('#sortSchools').val() == 'Win Percent (low to high)'){
+      colleges = colleges.sort(sortByWinPercentage).reverse();
+  }
+  if($('#sortSchools').val() == 'In-State Tuition (high to low)'){
+      colleges = colleges.sort(sortByInStateTuition);
+  }
+  if($('#sortSchools').val() == 'In-State Tuition (low to high)'){
+      colleges = colleges.sort(sortByInStateTuition).reverse();
+  }
+  if($('#sortSchools').val() == 'Out-of-State Tuition (high to low)'){
+      colleges = colleges.sort(sortByOutOfStateTuition);
+  }
+  if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
+      colleges = colleges.sort(sortByOutOfStateTuition).reverse();
+  }
+  for (i=0; i < colleges.length; i++){
+      var collegeName = colleges[i].schoolName;
+      collegeName = collegeName.split("(")[0];
           $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
-        map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
+          map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
       }
       $("td").click(function(e){
-         var index = $(this).data('index');
-         var college = colleges[index];
-         $("td").removeClass('active');
-         $(this).addClass('active');
-         var schoolName = college.schoolName.split("(")[0];
-         var instaQuery = schoolName.replace(/\s/g, '') + 'Soccer';
-         console.log(instaQuery);
-         $('#instafeed').empty();
-         var feed = new Instafeed({
-			get: "tagged",
-			tagName: instaQuery,
-			limit: 12,
-			clientId: "5a029a80a3174286850a72c285d5eed3"
-		});
-		feed.run()
-		 $('#instaLabel').text("#" + instaQuery);
-         $('#schoolName').text(schoolName);
-         $('#conference').text(college.conference);
-         $('#overallRecord').text(college.overallRecord);
-         $('#winPercent').text(college.winPercent);
-         var overallRecord = college.overallRecord.split("-");
-         $('#wins').text(overallRecord[0]);
-         $('#losses').text(overallRecord[1]);
-         $('#ties').text(overallRecord[2]);
-         var conferenceRecord = college.conferenceRecord.split("-");
-         $('#winsConference').text(conferenceRecord[0]);
-         $('#lossesConference').text(conferenceRecord[1]);
-         $('#tiesConference').text(conferenceRecord[2]);
-         $('#state').text(college.state);
-         $('#city').text(college.city);
-         $('#headCoach').text(college.headCoach);
-         $('#coachPhone').text(college.coachPhone);
-         $('#nickname').text(college.nickname);
-         $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
-         $('#goalsFor').text(college.goalsFor);
-         $('#goalsAgainst').text(college.goalsAgainst);
-         $('#description').text(college.description);
-         $('#schoolUrl').text(college.schoolUrl);
-         $('#schoolUrlLink').attr("href", "http://"+college.schoolUrl);
-         $('#schoolSize').text(college.schoolSize);
-         $('#undergradPopulation').text(college.undergradPopulation);
-         $('#inStateTuition').text(college.inStateTuition);
-         $('#outOfStateTuition').text(college.outOfStateTuition);
-         $('#address').text(college.address);
-         $('#facultyRatio').text(college.facultyRatio);
-         $('#acceptanceLevel').text(college.acceptanceLevel);
-         $('#acceptanceRate').text(college.acceptanceRate + "%");
-         $('#allSchoolInfo').removeClass('hide');
-         $('html, body').animate({
-        scrollTop: $("#allSchoolInfo").offset().top
+       var index = $(this).data('index');
+       var college = colleges[index];
+       $("td").removeClass('active');
+       $(this).addClass('active');
+       var schoolName = college.schoolName.split("(")[0];
+           var instaQuery = schoolName.replace(/\s/g, '').replace('.', '') + 'Soccer';
+           console.log(instaQuery);
+           $('#instafeed').empty();
+           var feed = new Instafeed({
+             get: "tagged",
+             tagName: instaQuery,
+             limit: 12,
+             clientId: "5a029a80a3174286850a72c285d5eed3",
+        template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>'
+         });
+           feed.run()
+           $('#instaLabel').text("#" + instaQuery);
+           $('#schoolName').text(schoolName);
+           $('#conference').text(college.conference);
+           $('#overallRecord').text(college.overallRecord);
+           $('#winPercent').text(college.winPercent);
+           var overallRecord = college.overallRecord.split("-");
+           $('#wins').text(overallRecord[0]);
+           $('#losses').text(overallRecord[1]);
+           $('#ties').text(overallRecord[2]);
+           var conferenceRecord = college.conferenceRecord.split("-");
+           $('#winsConference').text(conferenceRecord[0]);
+           $('#lossesConference').text(conferenceRecord[1]);
+           $('#tiesConference').text(conferenceRecord[2]);
+           $('#state').text(college.state);
+           $('#city').text(college.city);
+           $('#headCoach').text(college.headCoach);
+           $('#coachPhone').text(college.coachPhone);
+           $('#nickname').text(college.nickname);
+           $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
+           $('#goalsFor').text(college.goalsFor);
+           $('#goalsAgainst').text(college.goalsAgainst);
+           $('#description').text(college.description);
+           $('#schoolUrl').text(college.schoolUrl);
+           $('#schoolUrlLink').attr("href", "http://"+college.schoolUrl);
+           $('#schoolSize').text(college.schoolSize);
+           $('#undergradPopulation').text(college.undergradPopulation);
+           $('#inStateTuition').text(college.inStateTuition);
+           $('#outOfStateTuition').text(college.outOfStateTuition);
+           $('#address').text(college.address);
+           $('#facultyRatio').text(college.facultyRatio);
+           $('#acceptanceLevel').text(college.acceptanceLevel);
+           $('#acceptanceRate').text(college.acceptanceRate + "%");
+           $('#allSchoolInfo').removeClass('hide');
+           $('html, body').animate({
+            scrollTop: $("#allSchoolInfo").offset().top
         }, 700);
-         var rosterDist = compileRosterData(college.rosterDistribution);
-         updateRosterDistChart(rosterDist);
-     	});
+           var rosterDist = compileRosterData(college.rosterDistribution);
+           updateRosterDistChart(rosterDist);
+       });
 
 }
 
@@ -98,11 +99,11 @@ function compileRosterData(rosterData) {
     }
     for (var j = 0; j < newData.length; j++) {
         if (newData[j][1] == 0) {
-         newData.splice(j, 1);
-         j--;
-     }
- }
- return newData;
+           newData.splice(j, 1);
+           j--;
+       }
+   }
+   return newData;
 }
 
 function updateRosterDistChart(compiledData) {
@@ -114,11 +115,11 @@ function updateRosterDistChart(compiledData) {
 }
 
 function filterByState() {
-	colleges = [];
-	var filtered = [];
+    colleges = [];
+    var filtered = [];
     var map = $('#map').vectorMap('get', 'mapObject');
     var regions = map.getSelectedRegions();
-    
+
     if (regions.length > 0) {
         for (i=0; i < data.length; i++) {
             for (j=0; j < regions.length; j++) {
@@ -139,90 +140,90 @@ function filterByState() {
 }
 
 function filterByFacets(){
-var conference = $('#conferenceDDL').val();
-var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
-var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
-var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
-if(conference == 'ALL'){
+    var conference = $('#conferenceDDL').val();
+    var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
+    var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
+    var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
+    if(conference == 'ALL'){
 
-	colleges = _.filter(colleges, function(college){
-		if(college.undergradPopulation.length > 3){
-		var collegePop = college.undergradPopulation.split(',');
-		collegePop = collegePop[0] + collegePop[1];
-	}
-	else{
-		var collegePop = college.undergradPopulation;
-	}
-	return winPercent[0] <= college.winPercent * 100 && 
-	college.winPercent * 100 <= winPercent[1] && 
-	acceptance[0] <= college.acceptanceRate && 
-	college.acceptanceRate <= acceptance[1] &&
-	population[0] <= collegePop && 
-	collegePop <= population[1];
-});
+       colleges = _.filter(colleges, function(college){
+          if(college.undergradPopulation.length > 3){
+              var collegePop = college.undergradPopulation.split(',');
+              collegePop = collegePop[0] + collegePop[1];
+          }
+          else{
+              var collegePop = college.undergradPopulation;
+          }
+          return winPercent[0] <= college.winPercent * 100 && 
+          college.winPercent * 100 <= winPercent[1] && 
+          acceptance[0] <= college.acceptanceRate && 
+          college.acceptanceRate <= acceptance[1] &&
+          population[0] <= collegePop && 
+          collegePop <= population[1];
+      });
 
-}
-else{
-colleges = _.filter(colleges, function(college){
-	if(college.undergradPopulation.length > 3){
-		var collegePop = college.undergradPopulation.split(',');
-		collegePop = collegePop[0] + collegePop[1];
-	}
-	else{
-		var collegePop = college.undergradPopulation;
-	}
-	return college.conference.trim() == conference.trim() && 
-	winPercent[0] <= college.winPercent * 100 &&
-	college.winPercent * 100 <= winPercent[1] &&
-	acceptance[0] <= college.acceptanceRate &&
-	college.acceptanceRate <= acceptance[1] &&
-	population[0] <= collegePop &&
-	collegePop <= population[1];
-});
+   }
+   else{
+    colleges = _.filter(colleges, function(college){
+       if(college.undergradPopulation.length > 3){
+          var collegePop = college.undergradPopulation.split(',');
+          collegePop = collegePop[0] + collegePop[1];
+      }
+      else{
+          var collegePop = college.undergradPopulation;
+      }
+      return college.conference.trim() == conference.trim() && 
+      winPercent[0] <= college.winPercent * 100 &&
+      college.winPercent * 100 <= winPercent[1] &&
+      acceptance[0] <= college.acceptanceRate &&
+      college.acceptanceRate <= acceptance[1] &&
+      population[0] <= collegePop &&
+      collegePop <= population[1];
+  });
 }
 }
 
 function sortByWinPercentage(a, b)
 {
-  if (a.winPercent < b.winPercent)
-    return 1;
-if (a.winPercent > b.winPercent)
-    return -1;
-return 0;
+    if (a.winPercent < b.winPercent)
+        return 1;
+    if (a.winPercent > b.winPercent)
+        return -1;
+    return 0;
 }
 
 function sortByInStateTuition(a, b)
 {
-	var a = a.inStateTuition.slice(1,a.inStateTuition.length);
-	a = a.split(',');
-	a =  a[0] + a[1];
-	a = parseFloat(a);
-	var b = b.inStateTuition.slice(1,b.inStateTuition.length);
-	b = b.split(',');
-	b =  b[0] + b[1];
-	b = parseFloat(b);
-  if (a < b)
-    return 1;
-if (a > b)
-    return -1;
-return 0;
+    var a = a.inStateTuition.slice(1,a.inStateTuition.length);
+    a = a.split(',');
+    a =  a[0] + a[1];
+    a = parseFloat(a);
+    var b = b.inStateTuition.slice(1,b.inStateTuition.length);
+    b = b.split(',');
+    b =  b[0] + b[1];
+    b = parseFloat(b);
+    if (a < b)
+        return 1;
+    if (a > b)
+        return -1;
+    return 0;
 }
 
 function sortByOutOfStateTuition(a, b)
 {
-	var a = a.outOfStateTuition.slice(1,a.outOfStateTuition.length);
-	a = a.split(',');
-	a =  a[0] + a[1];
-	a = parseFloat(a);
-	var b = b.outOfStateTuition.slice(1,b.outOfStateTuition.length);
-	b = b.split(',');
-	b =  b[0] + b[1];
-	b = parseFloat(b);
-  if (a < b)
-    return 1;
-if (a > b)
-    return -1;
-return 0;
+    var a = a.outOfStateTuition.slice(1,a.outOfStateTuition.length);
+    a = a.split(',');
+    a =  a[0] + a[1];
+    a = parseFloat(a);
+    var b = b.outOfStateTuition.slice(1,b.outOfStateTuition.length);
+    b = b.split(',');
+    b =  b[0] + b[1];
+    b = parseFloat(b);
+    if (a < b)
+        return 1;
+    if (a > b)
+        return -1;
+    return 0;
 }
 
 function resetDefault() {
