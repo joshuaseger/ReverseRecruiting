@@ -148,8 +148,6 @@ colleges = _.filter(colleges, function(college){
 }
 }
 
-
-
 function sortByWinPercentage(a, b)
 {
   if (a.winPercent < b.winPercent)
