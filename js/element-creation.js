@@ -31,6 +31,7 @@ function createSliders() {
 	});
 	$( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
 		"% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
+
 	$( "#wins-slider" ).slider({
 		range: true,
 		min: 0,
@@ -42,6 +43,18 @@ function createSliders() {
 	});
 	$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
 		"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
+
+	$( "#undergrad-pop" ).slider({
+	range: true,
+	min: 500,
+	max: 35000,
+	values: [ 500, 35000 ],
+	slide: function( event, ui ) {
+		$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
+	},
+	});
+	$( "#undergrad-population" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
+		" - " + $( "#wins-slider" ).slider( "values", 1 ));
 }
 
 function createPieChart() {
