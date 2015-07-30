@@ -55,7 +55,7 @@ function createPieChart() {
             },
             colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
             tooltip: {
-                pointFormat: '<b>{point.y}</b>'
+                enabled: false
             },
             plotOptions: {
                 pie: {
