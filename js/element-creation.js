@@ -40,7 +40,7 @@ function createSliders() {
 			$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
 		},
 		stop: function(event, ui) {
-			alert('kdfsjaldkfj');
+			//filterByWinPercentage(ui.values[0], ui.values[1]);
 		}
 	});
 	$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
