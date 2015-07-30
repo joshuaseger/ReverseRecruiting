@@ -1,6 +1,24 @@
 function UpdateColleges() {
 	$("#collegeOutput").empty();
-	colleges = colleges.sort(sortByWinPercentage);
+	if($('#sortSchools').val() == 'Win Percent(High to Low)'){
+		colleges = colleges.sort(sortByWinPercentage);
+	}
+	if($('#sortSchools').val() == 'Win Percent(Low to High)'){
+		colleges = colleges.sort(sortByWinPercentage).reverse();
+	}
+	if($('#sortSchools').val() == 'In-State-Tuition(High to Low)'){
+		colleges = colleges.sort(sortByInStateTuition);
+	}
+	if($('#sortSchools').val() == 'In-State-Tuition(Low to High)'){
+		colleges = colleges.sort(sortByInStateTuition).reverse();
+	}
+	if($('#sortSchools').val() == 'Out-of-State-Tuition(High to Low)'){
+		colleges = colleges.sort(sortByOutOfStateTuition);
+	}
+	if($('#sortSchools').val() == 'Out-of-State-Tuition(Low to High)'){
+		colleges = colleges.sort(sortByOutOfStateTuition).reverse();
+	}
+	
 	for (i=0; i < colleges.length; i++){
 		var name = colleges[i].schoolName;
 		name = name.split("(")[0];
@@ -148,11 +166,49 @@ colleges = _.filter(colleges, function(college){
 }
 }
 
+$('#sortSchools').change(function(){
+UpdateColleges();
+});
+
 function sortByWinPercentage(a, b)
 {
   if (a.winPercent < b.winPercent)
     return 1;
 if (a.winPercent > b.winPercent)
+    return -1;
+return 0;
+}
+
+function sortByInStateTuition(a, b)
+{
+	var a = a.inStateTuition.slice(1,a.inStateTuition.length);
+	a = a.split(',');
+	a =  a[0] + a[1];
+	a = parseFloat(a);
+	var b = b.inStateTuition.slice(1,b.inStateTuition.length);
+	b = b.split(',');
+	b =  b[0] + b[1];
+	b = parseFloat(b);
+  if (a < b)
+    return 1;
+if (a > b)
+    return -1;
+return 0;
+}
+
+function sortByOutOfStateTuition(a, b)
+{
+	var a = a.outOfStateTuition.slice(1,a.outOfStateTuition.length);
+	a = a.split(',');
+	a =  a[0] + a[1];
+	a = parseFloat(a);
+	var b = b.outOfStateTuition.slice(1,b.outOfStateTuition.length);
+	b = b.split(',');
+	b =  b[0] + b[1];
+	b = parseFloat(b);
+  if (a < b)
+    return 1;
+if (a > b)
     return -1;
 return 0;
 }
