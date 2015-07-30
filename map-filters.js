@@ -1,21 +1,21 @@
 function UpdateColleges() {
 	$("#collegeOutput").empty();
-	if($('#sortSchools').val() == 'Win Percent(High to Low)'){
+	if($('#sortSchools').val() == 'Win Percent (high to low)'){
 		colleges = colleges.sort(sortByWinPercentage);
 	}
-	if($('#sortSchools').val() == 'Win Percent(Low to High)'){
+	if($('#sortSchools').val() == 'Win Percent (low to high)'){
 		colleges = colleges.sort(sortByWinPercentage).reverse();
 	}
-	if($('#sortSchools').val() == 'In-State-Tuition(High to Low)'){
+	if($('#sortSchools').val() == 'In-State Tuition (high to low)'){
 		colleges = colleges.sort(sortByInStateTuition);
 	}
-	if($('#sortSchools').val() == 'In-State-Tuition(Low to High)'){
+	if($('#sortSchools').val() == 'In-State Tuition (low to high)'){
 		colleges = colleges.sort(sortByInStateTuition).reverse();
 	}
-	if($('#sortSchools').val() == 'Out-of-State-Tuition(High to Low)'){
+	if($('#sortSchools').val() == 'Out-of-State Tuition (high to low)'){
 		colleges = colleges.sort(sortByOutOfStateTuition);
 	}
-	if($('#sortSchools').val() == 'Out-of-State-Tuition(Low to High)'){
+	if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
 		colleges = colleges.sort(sortByOutOfStateTuition).reverse();
 	}
 	
