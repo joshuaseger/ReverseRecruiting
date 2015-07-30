@@ -102,18 +102,26 @@ function filterByState() {
 }
 
 function filterByFacets(){
-var conference = $('#conferenceDDL').value;
-console.log(conference);
+var conference = $('#conferenceDDL').val();
+var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
+var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
+
 if(conference == 'ALL'){
-	colleges = data;
+	colleges = _.filter(colleges, function(college){
+	return winPercent[0] < college.winPercent * 100 && college.winPercent * 100 < winPercent[1]
+	&& acceptance[0] < college.acceptanceRate && college.acceptanceRate < acceptance[1];
+});
+
 }
 else{
 colleges = _.filter(colleges, function(college){
-	console.log( conference + ' == ' + college.conference);
-	return college.conference.trim() == conference.trim();
+	return college.conference.trim() == conference.trim() && 
+	winPercent[0] < college.winPercent * 100 &&
+	college.winPercent * 100 < winPercent[1] &&
+	acceptance[0] < college.acceptanceRate &&
+	college.acceptanceRate < acceptance[1];
 });
 }
-UpdateColleges();
 }
 
 
