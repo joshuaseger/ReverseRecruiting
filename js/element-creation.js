@@ -9,6 +9,9 @@ function createMap() {
 				fill: '#E8E8E8'
 			}
 		},
+		onMarkerClick: function(events, index) {
+                      window.location = "http://" + colleges[index].schoolUrl;
+                  },
 		regionStyle:
 		{
 			initial: {
