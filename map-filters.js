@@ -39,7 +39,7 @@ function UpdateColleges() {
          var feed = new Instafeed({
 			get: "tagged",
 			tagName: instaQuery,
-			limit: 14,
+			limit: 10,
 			clientId: "5a029a80a3174286850a72c285d5eed3"
 		});
 		feed.run()
