@@ -42,7 +42,12 @@ function UpdateColleges() {
 			limit: 12,
 			clientId: "5a029a80a3174286850a72c285d5eed3"
 		});
-		feed.run()
+        try{
+			feed.run()
+		}
+		catch(err){
+			$('#instagramPanel').hide();
+		}
 		 $('#instaLabel').text("#" + instaQuery);
          $('#schoolName').text(schoolName);
          $('#conference').text(college.conference);
