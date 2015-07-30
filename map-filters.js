@@ -65,6 +65,9 @@ function UpdateColleges() {
          $('#acceptanceLevel').text(college.acceptanceLevel);
          $('#acceptanceRate').text(college.acceptanceRate);
          $('#allSchoolInfo').removeClass('hide');
+         $('html, body').animate({
+        scrollTop: $("#allSchoolInfo").offset().top
+        }, 700);
          var rosterDist = compileRosterData(college.rosterDistribution);
          updateRosterDistChart(rosterDist);
      });
