@@ -100,18 +100,21 @@ function filterByState() {
     UpdateColleges();
 }
 
-$('#conference').change(function(){
-var conference = this.value;
-console.log(conference);
-colleges = filter(colleges, conference);
-UpdateColleges;
+function filterByFacets(){
+var conference = $('#conferenceDDL').value;
+if(conference == 'ALL'){
+	colleges = data;
+}
+else{
+colleges = _.filter(colleges, function(college){
+	console.log( conference + ' == ' + college.conference);
+	return college.conference.trim() == conference.trim() && ;
+});
+}
+UpdateColleges();
 })
 
-function filter(arr, criteria) {
-  return arr.filter(function(obj) {
-    return obj.conference == criteria;
-  });
-}
+
 
 function sortByWinPercentage(a, b)
 {
