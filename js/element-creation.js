@@ -67,6 +67,8 @@ function createPieChart() {
                     dataLabels: {
                         enabled: true,
                         format: '<b>{point.name}</b>: {point.y}',
+                        distance:-50,
+                        color: 'white'
                     }
                 }
             },
