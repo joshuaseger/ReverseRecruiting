@@ -10,7 +10,7 @@ function createMap() {
 			}
 		},
 		onMarkerClick: function(events, index) {
-                      window.location = "http://" + colleges[index].schoolUrl;
+                    //  window.location = "http://" + colleges[index].schoolUrl;
                   },
 		regionStyle:
 		{
