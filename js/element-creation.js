@@ -24,7 +24,7 @@ function createSliders() {
 		range: true,
 		min: 0,
 		max: 100,
-		values: [ 25, 75 ],
+		values: [ 0, 100 ],
 		slide: function( event, ui ) {
 			$( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
 		}
@@ -35,13 +35,10 @@ function createSliders() {
 		range: true,
 		min: 0,
 		max: 100,
-		values: [ 25, 75 ],
+		values: [ 0, 100 ],
 		slide: function( event, ui ) {
 			$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
 		},
-		stop: function(event, ui) {
-			//filterByWinPercentage(ui.values[0], ui.values[1]);
-		}
 	});
 	$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
 		"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
