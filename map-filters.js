@@ -34,9 +34,12 @@ function UpdateColleges() {
          $(this).addClass('active');
          var schoolName = college.schoolName.split("(")[0];
          var instaQuery = schoolName.replace(/\s/g, '') + 'soccer';
+         console.log(instaQuery);
+         $('#instafeed').empty();
          var feed = new Instafeed({
 			get: "tagged",
 			tagName: instaQuery,
+			limit: 14,
 			clientId: "5a029a80a3174286850a72c285d5eed3"
 		});
 		feed.run()
