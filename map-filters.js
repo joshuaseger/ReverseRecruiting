@@ -33,6 +33,13 @@ function UpdateColleges() {
          $("td").removeClass('active');
          $(this).addClass('active');
          var schoolName = college.schoolName.split("(")[0];
+         var instaQuery = schoolName.replace(/\s/g, '') + 'soccer';
+         var feed = new Instafeed({
+			get: "tagged",
+			tagName: instaQuery,
+			clientId: "5a029a80a3174286850a72c285d5eed3"
+		});
+		feed.run()
          $('#schoolName').text(schoolName);
          $('#conference').text(college.conference);
          $('#overallRecord').text(college.overallRecord);
@@ -70,7 +77,8 @@ function UpdateColleges() {
         }, 700);
          var rosterDist = compileRosterData(college.rosterDistribution);
          updateRosterDistChart(rosterDist);
-     });
+     	});
+
 }
 
 function compileRosterData(rosterData) {
@@ -215,6 +223,4 @@ if (a > b)
 return 0;
 }
 
-$('#sortSchools').change(function() {
-UpdateColleges();
-});
+
