@@ -53,8 +53,8 @@ function createSliders() {
 		$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
 	},
 	});
-	$( "#undergrad-population" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
-		" - " + $( "#wins-slider" ).slider( "values", 1 ));
+	$( "#undergrad-population" ).val( $( "#undergrad-pop" ).slider( "values", 0 ) +
+		" - " + $( "#undergrad-pop" ).slider( "values", 1 ));
 }
 
 function createPieChart() {
