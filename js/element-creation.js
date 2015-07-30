@@ -78,7 +78,8 @@ function createPieChart() {
                         enabled: true,
                         format: '<b>{point.name}</b>: {point.y}',
                         distance:-50,
-                        color: 'white'
+                        color: 'white',
+                        style: { fontFamily: 'Helvetica' }
                     }
                 }
             },
