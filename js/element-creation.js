@@ -10,8 +10,8 @@ function createMap() {
 			}
 		},
 		onMarkerClick: function(events, index) {
-                    //  window.location = "http://" + colleges[index].schoolUrl;
-                  },
+			$("td:eq("+index+")").click();
+		},
 		regionStyle:
 		{
 			initial: {
@@ -22,10 +22,9 @@ function createMap() {
 			}
 		},
 		onRegionSelected: function(e, code, isSelected, selectedRegions) {
-				//alert('selected regions are: ' + selectedRegions.toString());
-				filterByState();
-			}
-		});
+			filterByState();
+		}
+	});
 }
 function createSliders() {
 	$( "#acceptance-slider" ).slider({
@@ -66,37 +65,37 @@ function createSliders() {
 }
 
 function createPieChart() {
-    $('#rosterDistribution').highcharts({
-            chart: {
-            	backgroundColor: null,
-                type: 'pie'
-            },
-            credits: {
-            	enabled: false
-            },
-            colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
-            tooltip: {
-                enabled: false
-            },
-            plotOptions: {
-                pie: {
-                    shadow: false,
-                    center: ['50%, 50%'],
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.y}',
-                        distance:-50,
-                        color: 'white',
-                        style: { fontFamily: 'Helvetica' }
-                    }
-                }
-            },
-            title: {
-                text: 'Roster Distribution',
-                style: {fontFamily: 'Helvetica'}
-            },
-            series: [{
-                name: "Roster Distribution"
-            }]
-        });
+	$('#rosterDistribution').highcharts({
+		chart: {
+			backgroundColor: null,
+			type: 'pie'
+		},
+		credits: {
+			enabled: false
+		},
+		colors: ['#5cb85c', '#f0ad4e', '#337ab7', '#4A4A4A'],
+		tooltip: {
+			enabled: false
+		},
+		plotOptions: {
+			pie: {
+				shadow: false,
+				center: ['50%, 50%'],
+				dataLabels: {
+					enabled: true,
+					format: '<b>{point.name}</b>: {point.y}',
+					distance:-50,
+					color: 'white',
+					style: { fontFamily: 'Helvetica' }
+				}
+			}
+		},
+		title: {
+			text: 'Roster Distribution',
+			style: {fontFamily: 'Helvetica'}
+		},
+		series: [{
+			name: "Roster Distribution"
+		}]
+	});
 }
