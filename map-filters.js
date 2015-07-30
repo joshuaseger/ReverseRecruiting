@@ -100,9 +100,17 @@ function filterByState() {
     UpdateColleges();
 }
 
-function filterByConference(){
-	var filtered = [];
-	var conference = document.getElementById('#conference').getSelected;
+$('#conference').change(function(){
+var conference = this.value;
+console.log(conference);
+colleges = filter(colleges, conference);
+UpdateColleges;
+})
+
+function filter(arr, criteria) {
+  return arr.filter(function(obj) {
+    return obj.conference == criteria;
+  });
 }
 
 function sortByWinPercentage(a, b)
