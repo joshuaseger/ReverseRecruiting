@@ -86,7 +86,7 @@
 			<div class="col-md-2">
 				<!--list of schools -->
 				<h3>Schools</h3>
-				<small>filter by:</small>
+				<small>sort by</small>
 				<select id="sortSchools" style="width:100%">
 					<option>Win Percent (high to low)</option>
 					<option>Win Percent (low to high)</option>
@@ -160,7 +160,11 @@ $(function(){
 	createSliders();
 	createPieChart();
 	UpdateColleges();
+	$('#sortSchools').change(function() {
+		UpdateColleges();
+	});
 });
+
 </script>
 </body>
 </html>

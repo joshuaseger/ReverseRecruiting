@@ -172,10 +172,6 @@ colleges = _.filter(colleges, function(college){
 }
 }
 
-$('#sortSchools').change(function(){
-UpdateColleges();
-});
-
 function sortByWinPercentage(a, b)
 {
   if (a.winPercent < b.winPercent)
@@ -218,3 +214,7 @@ if (a > b)
     return -1;
 return 0;
 }
+
+$('#sortSchools').change(function() {
+UpdateColleges();
+});
