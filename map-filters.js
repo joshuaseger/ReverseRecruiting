@@ -27,57 +27,8 @@ function UpdateColleges() {
           $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
           map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
       }
+      
       $("td").click(function(e){
-         var index = $(this).data('index');
-         var college = colleges[index];
-         $("td").removeClass('active');
-         $(this).addClass('active');
-         var schoolName = college.schoolName.split("(")[0];
-         var instaQuery = schoolName.replace(/\s/g, '') + 'Soccer';
-         console.log(instaQuery);
-         $('#instafeed').empty();
-         var feed = new Instafeed({
-			get: "tagged",
-			tagName: instaQuery,
-			limit: 12,
-			clientId: "5a029a80a3174286850a72c285d5eed3"
-		});
-		feed.run()
-		 $('#instaLabel').text("#" + instaQuery);
-         $('#schoolName').text(schoolName);
-         $('#conference').text(college.conference);
-         $('#overallRecord').text(college.overallRecord);
-         $('#winPercent').text(college.winPercent);
-         var overallRecord = college.overallRecord.split("-");
-         $('#wins').text(overallRecord[0]);
-         $('#losses').text(overallRecord[1]);
-         $('#ties').text(overallRecord[2]);
-         var conferenceRecord = college.conferenceRecord.split("-");
-         $('#winsConference').text(conferenceRecord[0]);
-         $('#lossesConference').text(conferenceRecord[1]);
-         $('#tiesConference').text(conferenceRecord[2]);
-         $('#state').text(college.state);
-         $('#city').text(college.city);
-         $('#headCoach').text(college.headCoach);
-         $('#coachPhone').text(college.coachPhone);
-         $('#nickname').text(college.nickname);
-         $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
-         $('#goalsFor').text(college.goalsFor);
-         $('#goalsAgainst').text(college.goalsAgainst);
-         $('#description').text(college.description);
-         $('#schoolUrl').text(college.schoolUrl);
-         $('#schoolUrlLink').attr("href", "http://"+college.schoolUrl);
-         $('#schoolSize').text(college.schoolSize);
-         $('#undergradPopulation').text(college.undergradPopulation);
-         $('#inStateTuition').text(college.inStateTuition);
-         $('#outOfStateTuition').text(college.outOfStateTuition);
-         $('#address').text(college.address);
-         $('#facultyRatio').text(college.facultyRatio);
-         $('#acceptanceLevel').text(college.acceptanceLevel);
-         $('#acceptanceRate').text(college.acceptanceRate + "%");
-         $('#allSchoolInfo').removeClass('hide');
-         $('html, body').animate({
-        scrollTop: $("#allSchoolInfo").offset().top
        var index = $(this).data('index');
        var college = colleges[index];
        $("td").removeClass('active');
@@ -129,12 +80,10 @@ function UpdateColleges() {
            $('#allSchoolInfo').removeClass('hide');
            $('html, body').animate({
             scrollTop: $("#allSchoolInfo").offset().top
->>>>>>> origin/master
         }, 700);
            var rosterDist = compileRosterData(college.rosterDistribution);
            updateRosterDistChart(rosterDist);
        });
-
 }
 
 function compileRosterData(rosterData) {
