@@ -97,22 +97,24 @@ function filterByState() {
     } else {  
         colleges = data;
     }
+    filterByFacets();
     UpdateColleges();
 }
 
 function filterByFacets(){
 var conference = $('#conferenceDDL').value;
+console.log(conference);
 if(conference == 'ALL'){
 	colleges = data;
 }
 else{
 colleges = _.filter(colleges, function(college){
 	console.log( conference + ' == ' + college.conference);
-	return college.conference.trim() == conference.trim() && ;
+	return college.conference.trim() == conference.trim();
 });
 }
 UpdateColleges();
-})
+}
 
 
 
