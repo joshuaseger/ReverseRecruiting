@@ -11,7 +11,8 @@ function UpdateColleges() {
          var college = colleges[index];
          $("td").removeClass('active');
          $(this).addClass('active');
-         $('#schoolName').text(college.schoolName);
+         var schoolName = college.schoolName.split("(")[0];
+         $('#schoolName').text(schoolName);
          $('#conference').text(college.conference);
          $('#overallRecord').text(college.overallRecord);
          $('#winPercent').text(college.winPercent);
