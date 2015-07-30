@@ -6,7 +6,7 @@ function createMap() {
 		regionsSelectable: true,
 		markerStyle: {
 			initial: {
-				fill: '#232A31'
+				fill: '#E8E8E8'
 			}
 		},
 		regionStyle:
