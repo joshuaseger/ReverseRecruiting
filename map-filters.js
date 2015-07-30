@@ -131,7 +131,6 @@ var conference = $('#conferenceDDL').val();
 var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
 var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
 var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
-
 if(conference == 'ALL'){
 
 	colleges = _.filter(colleges, function(college){
@@ -142,7 +141,6 @@ if(conference == 'ALL'){
 	else{
 		var collegePop = college.undergradPopulation;
 	}
-	console.log(population[0] + " < " + collegePop+ " < " + population[1] + " " + college.schoolName);
 	return winPercent[0] <= college.winPercent * 100 && 
 	college.winPercent * 100 <= winPercent[1] && 
 	acceptance[0] <= college.acceptanceRate && 
@@ -218,3 +216,21 @@ return 0;
 $('#sortSchools').change(function() {
 UpdateColleges();
 });
+function resetDefault() {
+    var map = $('#map').vectorMap('get', 'mapObject');
+    map.clearSelectedRegions();
+    $( "#acceptance-slider" ).slider( "values", 0, 0 );
+    $( "#acceptance-slider" ).slider( "values", 1, 100 );
+    $( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
+        "% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
+    $( "#wins-slider" ).slider( "values", 0, 0 );
+    $( "#wins-slider" ).slider( "values", 1, 100 );
+    $( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
+        "% - " + $( "#acceptance-slider" ).slider( "values", 1 ) + "%" );
+    $( "#undergrad-pop" ).slider( "values", 0, 500 );
+    $( "#undergrad-pop" ).slider( "values", 1, 45000 );
+    $( "#undergrad-population" ).val( $( "#undergrad-pop" ).slider( "values", 0 ) +
+        " - " + $( "#undergrad-pop" ).slider( "values", 1 ));
+    $('select>option:eq(0)').prop('selected', true);
+    filterByState();
+}

@@ -59,7 +59,7 @@
 				</select>
 				<br><br>
 				<p>
-					<label for="acceptance-rate">Acceptance Rate:</label>
+					<label for="acceptance-rate">College Acceptance Rate:</label>
 					<input type="text" id="acceptance-rate" readonly style="border:0; color:#ff6600; font-weight:bold;">
 				</p>
 				<div id="acceptance-slider"></div>
@@ -71,13 +71,13 @@
 				<div id="wins-slider"></div>
 				<br>
 				<p>
-					<label for="undergrad-population">Population:</label>
+					<label for="undergrad-population">Undergraduate Population:</label>
 					<input type="text" id="undergrad-population" readonly style="border:0; color:#ff6600; font-weight:bold;">
 				</p>
 				<div id="undergrad-pop"></div>
 				<br>
 				<button type="button" class="btn btn-default" onclick="filterByState()">Filter</button>
-
+				<button type="button" class="btn btn-default" onclick="resetDefault()">Clear</button>
 			</div>
 			
 			<div id="map" class="col-md-8" style="padding:20px 0px 20px 0px;height:400px;">
