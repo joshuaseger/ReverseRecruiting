@@ -84,7 +84,8 @@ function createPieChart() {
                 }
             },
             title: {
-                text: 'Roster Distribution'
+                text: 'Roster Distribution',
+                style: {fontFamily: 'Helvetica'}
             },
             series: [{
                 name: "Roster Distribution"
