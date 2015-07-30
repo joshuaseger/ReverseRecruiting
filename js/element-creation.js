@@ -47,8 +47,8 @@ function createSliders() {
 	$( "#undergrad-pop" ).slider({
 	range: true,
 	min: 500,
-	max: 35000,
-	values: [ 500, 35000 ],
+	max: 45000,
+	values: [ 500, 45000 ],
 	slide: function( event, ui ) {
 		$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
 	},
@@ -83,7 +83,7 @@ function createPieChart() {
                 }
             },
             title: {
-                text: ''
+                text: 'Roster Distribution'
             },
             series: [{
                 name: "Roster Distribution"

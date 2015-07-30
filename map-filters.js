@@ -106,21 +106,44 @@ function filterByFacets(){
 var conference = $('#conferenceDDL').val();
 var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
 var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
+var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
 
 if(conference == 'ALL'){
+
 	colleges = _.filter(colleges, function(college){
-	return winPercent[0] < college.winPercent * 100 && college.winPercent * 100 < winPercent[1]
-	&& acceptance[0] < college.acceptanceRate && college.acceptanceRate < acceptance[1];
+		if(college.undergradPopulation.length > 3){
+		var collegePop = college.undergradPopulation.split(',');
+		collegePop = collegePop[0] + collegePop[1];
+	}
+	else{
+		var collegePop = college.undergradPopulation;
+	}
+	console.log(population[0] + " < " + collegePop+ " < " + population[1] + " " + college.schoolName);
+	return winPercent[0] <= college.winPercent * 100 && 
+	college.winPercent * 100 <= winPercent[1] && 
+	acceptance[0] <= college.acceptanceRate && 
+	college.acceptanceRate <= acceptance[1] &&
+	population[0] <= collegePop && 
+	collegePop <= population[1];
 });
 
 }
 else{
 colleges = _.filter(colleges, function(college){
+	if(college.undergradPopulation.length > 3){
+		var collegePop = college.undergradPopulation.split(',');
+		collegePop = collegePop[0] + collegePop[1];
+	}
+	else{
+		var collegePop = college.undergradPopulation;
+	}
 	return college.conference.trim() == conference.trim() && 
-	winPercent[0] < college.winPercent * 100 &&
-	college.winPercent * 100 < winPercent[1] &&
-	acceptance[0] < college.acceptanceRate &&
-	college.acceptanceRate < acceptance[1];
+	winPercent[0] <= college.winPercent * 100 &&
+	college.winPercent * 100 <= winPercent[1] &&
+	acceptance[0] <= college.acceptanceRate &&
+	college.acceptanceRate <= acceptance[1] &&
+	population[0] <= collegePop &&
+	collegePop <= population[1];
 });
 }
 }
