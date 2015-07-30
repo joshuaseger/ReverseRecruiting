@@ -34,6 +34,7 @@ function UpdateColleges() {
          $('#goalsAgainst').text(college.goalsAgainst);
          $('#description').text(college.description);
          $('#schoolUrl').text(college.schoolUrl);
+         $('#schoolUrlLink').attr("href", "http://"+college.schoolUrl);
          $('#schoolSize').text(college.schoolSize);
          $('#undergradPopulation').text(college.undergradPopulation);
          $('#inStateTuition').text(college.inStateTuition);
