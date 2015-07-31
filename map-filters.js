@@ -43,7 +43,7 @@ function UpdateColleges() {
              clientId: "5a029a80a3174286850a72c285d5eed3",
         template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>'
          });
-           feed.run()
+           feed.run()   		
            $('#instaLabel').text("#" + instaQuery);
            $('#schoolName').text(schoolName);
            $('#conference').text(college.conference);
@@ -62,7 +62,10 @@ function UpdateColleges() {
            $('#headCoach').text(college.headCoach);
            $('#coachPhone').text(college.coachPhone);
            $('#nickname').text(college.nickname);
-           $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
+           if(parseFloat(college.rpiRanking.split(':')[1]) == 1){
+           	$('#schoolName').append('<img id="trophy" src="images/trophy.png" width="55" height="60"/>')
+           }
+		   $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
            $('#goalsFor').text(college.goalsFor);
            $('#goalsAgainst').text(college.goalsAgainst);
            $('#description').text(college.description);
