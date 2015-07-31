@@ -21,6 +21,12 @@ function UpdateColleges() {
   if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
       colleges = colleges.sort(sortByOutOfStateTuition).reverse();
   }
+  if($('#sortSchools').val() == 'Rpi Ranking (high to low)'){
+      colleges = colleges.sort(sortByRpiRanking);
+  }
+  if($('#sortSchools').val() == 'Rpi Ranking (low to high)'){
+      colleges = colleges.sort(sortByRpiRanking).reverse();
+  }
   for (i=0; i < colleges.length; i++){
       var collegeName = colleges[i].schoolName;
       collegeName = collegeName.split("(")[0];
@@ -70,7 +76,7 @@ function UpdateColleges() {
            if(parseFloat(college.rpiRanking.split(':')[1]) == 1){
            	$('#schoolName').append('<img id="trophy" src="images/trophy.png" width="55" height="60"/>')
            }
-		   $('#rpiRanking').text(college.rpiRanking.split(':')[1]);
+		   $('#confRanking').text(college.rpiRanking.split(':')[1]);
            $('#goalsFor').text(college.goalsFor);
            $('#goalsAgainst').text(college.goalsAgainst);
            $('#description').text(college.description);
@@ -84,6 +90,7 @@ function UpdateColleges() {
            $('#facultyRatio').text(college.facultyRatio);
            $('#acceptanceLevel').text(college.acceptanceLevel);
            $('#acceptanceRate').text(college.acceptanceRate + "%");
+           $('#rpiRanking').text(college.ranking);
            $('#allSchoolInfo').removeClass('hide');
            $('html, body').animate({
             scrollTop: $("#allSchoolInfo").offset().top
@@ -200,6 +207,17 @@ function sortByWinPercentage(a, b)
         return 1;
     if (a.winPercent > b.winPercent)
         return -1;
+    return 0;
+}
+
+function sortByRpiRanking(a, b)
+{
+	a = parseInt(a.ranking);
+	b = parseInt(b.ranking);
+    if (a < b)
+        return -1;
+    if (a > b)
+        return 1;
     return 0;
 }
 
