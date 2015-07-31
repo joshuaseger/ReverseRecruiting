@@ -65,6 +65,7 @@ function UpdateColleges() {
             }
         });
            feed.run()
+           $('#trophy').empty();
            $('#instaLabel').text("#" + instaQuery);
            $('#instaLink').attr("href","https://instagram.com/explore/tags/"+instaQuery);
            $('#schoolName').text(schoolName);
@@ -84,8 +85,9 @@ function UpdateColleges() {
            $('#headCoach').text(college.headCoach);
            $('#coachPhone').text(college.coachPhone);
            $('#nickname').text(college.nickname);
+
            if(parseFloat(college.rpiRanking.split(':')[1]) == 1){
-           	$('#schoolName').append('<img id="trophy" src="images/trophy.png" width="55" height="60"/>')
+           	$('#trophy').append('<img id="trophy" src="images/trophy.png" width="55" height="60"/>')
            }
 		   $('#confRanking').text(college.rpiRanking.split(':')[1]);
            $('#goalsFor').text(college.goalsFor);
