@@ -49,6 +49,7 @@ function UpdateColleges() {
         });
            feed.run()
            $('#instaLabel').text("#" + instaQuery);
+           $('#instaLink').attr("href","https://instagram.com/explore/tags/"+instaQuery);
            $('#schoolName').text(schoolName);
            $('#conference').text(college.conference);
            $('#overallRecord').text(college.overallRecord);
