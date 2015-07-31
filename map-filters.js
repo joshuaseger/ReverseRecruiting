@@ -114,13 +114,28 @@ function UpdateColleges() {
 }
 
 function populateShortList(map){
-	  for (i=0; i < colleges.length; i++){
-      var collegeName = colleges[i].schoolName;
-      collegeName = collegeName.split("(")[0];
-          $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
-          map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
-      }
-}
+	for (i=0; i < colleges.length; i++){
+		var collegeName = colleges[i].schoolName;
+		collegeName = collegeName.split("(")[0];
+			try {
+			if(colleges[i].rosterDistribution != undefined){
+				
+				if(colleges[i].rosterDistribution.join().match(/SR/g).length !== null){
+					if(colleges[i].rosterDistribution.join().match(/SR/g).length > 10){
+						$("#collegeOutput").append("<tr><td class=\"success\" data-index="+i+">"+collegeName+"</td></tr>");
+					}else{
+						$("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
+					}
+				} 
+				} 
+			}
+			catch (err) {
+					console.log(collegeName + " roster: " + colleges[i].rosterDistribution);
+				}
+			
+			map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
+		}
+	}
 
 function goToTop() {
     $('html, body').animate({
@@ -293,3 +308,5 @@ function resetDefault() {
     $('select>option:eq(0)').prop('selected', true);
     filterByState();
 }
+
+
