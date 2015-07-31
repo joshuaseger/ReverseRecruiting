@@ -27,7 +27,7 @@ function UpdateColleges() {
           $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
           map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
       }
-      
+
       $("td").click(function(e){
        var index = $(this).data('index');
        var college = colleges[index];
@@ -39,7 +39,7 @@ function UpdateColleges() {
            var feed = new Instafeed({
              get: "tagged",
              tagName: instaQuery,
-             limit: 12,
+             limit: 10,
              clientId: "5a029a80a3174286850a72c285d5eed3",
         template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>'
          });
