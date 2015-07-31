@@ -2,6 +2,9 @@
 	margin: 10px;
 }
 .cd-top {
-	bottom:0;
 	position:fixed;
+	width:40px;
+
+	bottom:20px;
+	right:20px;
 }
