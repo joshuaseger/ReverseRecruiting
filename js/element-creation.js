@@ -34,9 +34,6 @@ function createSliders() {
 		values: [ 0, 100 ],
 		slide: function( event, ui ) {
 			$( "#acceptance-rate" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
-		},
-		stop: function(event, ui) {
-			enableFilterBtn();
 		}
 	});
 	$( "#acceptance-rate" ).val( $( "#acceptance-slider" ).slider( "values", 0 ) +
@@ -50,9 +47,6 @@ function createSliders() {
 		slide: function( event, ui ) {
 			$( "#win-percent" ).val( ui.values[ 0 ] + "% - " + ui.values[ 1 ] + "%" );
 		},
-		stop: function(event, ui) {
-			enableFilterBtn();
-		}
 	});
 	$( "#win-percent" ).val( $( "#wins-slider" ).slider( "values", 0 ) +
 		"% - " + $( "#wins-slider" ).slider( "values", 1 ) + "%" );
@@ -65,9 +59,6 @@ function createSliders() {
 		slide: function( event, ui ) {
 			$( "#undergrad-population" ).val( ui.values[ 0 ] + " - " + ui.values[ 1 ]);
 		},
-		stop: function(event, ui) {
-			enableFilterBtn();
-		}
 	});
 	$( "#undergrad-population" ).val( $( "#undergrad-pop" ).slider( "values", 0 ) +
 		" - " + $( "#undergrad-pop" ).slider( "values", 1 ));

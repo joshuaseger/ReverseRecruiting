@@ -180,7 +180,6 @@ function filterByState() {
 }
 
 function filterByFacets(){
-    $('#filterBtn').addClass('disabled');
     var conference = $('#conferenceDDL').val();
     var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
     var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
@@ -293,8 +292,4 @@ function resetDefault() {
         " - " + $( "#undergrad-pop" ).slider( "values", 1 ));
     $('select>option:eq(0)').prop('selected', true);
     filterByState();
-}
-
-function enableFilterBtn() {
-    $('#filterBtn').removeClass('disabled');
 }
