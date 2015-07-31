@@ -35,14 +35,19 @@ function UpdateColleges() {
        $(this).addClass('active');
        var schoolName = college.schoolName.split("(")[0];
            var instaQuery = schoolName.replace(/\s/g, '').replace('.', '') + 'Soccer';
+
+           $("#instagramPanel").removeClass("hide");
            $('#instafeed').empty();
            var feed = new Instafeed({
-             get: "tagged",
-             tagName: instaQuery,
-             limit: 10,
-             clientId: "5a029a80a3174286850a72c285d5eed3",
-        template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>'
-         });
+               get: "tagged",
+               tagName: instaQuery,
+               limit: 10,
+               clientId: "5a029a80a3174286850a72c285d5eed3",
+               template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>',
+               error: function() {
+                $("#instagramPanel").addClass("hide");
+            }
+        });
            feed.run()
            $('#instaLabel').text("#" + instaQuery);
            $('#schoolName').text(schoolName);
