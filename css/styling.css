@@ -1,3 +1,7 @@
 #instafeed img {
 	margin: 10px;
 }
+.cd-top {
+	bottom:0;
+	position:fixed;
+}

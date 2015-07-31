@@ -92,6 +92,11 @@ function UpdateColleges() {
        });
 }
 
+function goToTop() {
+    $('html, body').animate({
+            scrollTop: $(".container").offset().top
+        }, 700);
+}
 function compileRosterData(rosterData) {
     var data = rosterData;
     var newData = [["Freshmen", 0],["Sophomores", 0],["Juniors", 0],["Seniors", 0]];
