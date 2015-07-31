@@ -5,35 +5,46 @@ function UpdateColleges() {
     map.removeAllMarkers();
     if($('#sortSchools').val() == 'Win Percent (high to low)'){
       colleges = colleges.sort(sortByWinPercentage);
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'Win Percent (low to high)'){
       colleges = colleges.sort(sortByWinPercentage).reverse();
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'In-State Tuition (high to low)'){
       colleges = colleges.sort(sortByInStateTuition);
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'In-State Tuition (low to high)'){
       colleges = colleges.sort(sortByInStateTuition).reverse();
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'Out-of-State Tuition (high to low)'){
       colleges = colleges.sort(sortByOutOfStateTuition);
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'Out-of-State Tuition (low to high)'){
       colleges = colleges.sort(sortByOutOfStateTuition).reverse();
+      populateShortList(map);
   }
   if($('#sortSchools').val() == 'Rpi Ranking (high to low)'){
       colleges = colleges.sort(sortByRpiRanking);
+        for (i=0; i < colleges.length; i++){
+      		var collegeName = "#" + colleges[i].ranking + " " + colleges[i].schoolName;
+      		collegeName = collegeName.split("(")[0];
+          	$("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
+          	map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
+      }
   }
   if($('#sortSchools').val() == 'Rpi Ranking (low to high)'){
       colleges = colleges.sort(sortByRpiRanking).reverse();
-  }
-  for (i=0; i < colleges.length; i++){
-      var collegeName = colleges[i].schoolName;
-      collegeName = collegeName.split("(")[0];
-          $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
-          map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
+       for (i=0; i < colleges.length; i++){
+      		var collegeName = "#" + colleges[i].ranking + " " + colleges[i].schoolName;
+      		collegeName = collegeName.split("(")[0];
+          	$("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
+          	map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
       }
-
+  }
       $("td").click(function(e){
        var index = $(this).data('index');
        var college = colleges[index];
@@ -100,11 +111,21 @@ function UpdateColleges() {
        });
 }
 
+function populateShortList(map){
+	  for (i=0; i < colleges.length; i++){
+      var collegeName = colleges[i].schoolName;
+      collegeName = collegeName.split("(")[0];
+          $("#collegeOutput").append("<tr><td data-index="+i+">"+collegeName+"</td></tr>");
+          map.addMarker(i, {latLng: [colleges[i].latitude,colleges[i].longitude], name: collegeName});
+      }
+}
+
 function goToTop() {
     $('html, body').animate({
             scrollTop: $(".container").offset().top
         }, 700);
 }
+
 function compileRosterData(rosterData) {
     var data = rosterData;
     var newData = [["Freshmen", 0],["Sophomores", 0],["Juniors", 0],["Seniors", 0]];
@@ -147,7 +168,6 @@ function filterByState() {
             }
         }
     }
-
     if (filtered.length >= 0 && regions.length >= 1) {
         colleges = filtered;
     } else {  
@@ -163,7 +183,6 @@ function filterByFacets(){
     var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
     var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
     if(conference == 'All'){
-
        colleges = _.filter(colleges, function(college){
           if(college.undergradPopulation.length > 3){
               var collegePop = college.undergradPopulation.split(',');
@@ -179,7 +198,6 @@ function filterByFacets(){
           population[0] <= collegePop && 
           collegePop <= population[1];
       });
-
    }
    else{
     colleges = _.filter(colleges, function(college){
