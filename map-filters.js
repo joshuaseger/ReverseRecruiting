@@ -118,7 +118,6 @@ function filterByState() {
     var filtered = [];
     var map = $('#map').vectorMap('get', 'mapObject');
     var regions = map.getSelectedRegions();
-
     if (regions.length > 0) {
         for (i=0; i < data.length; i++) {
             for (j=0; j < regions.length; j++) {
@@ -143,7 +142,7 @@ function filterByFacets(){
     var winPercent = [$('#wins-slider').slider('values', 0), $('#wins-slider').slider('values', 1)];
     var acceptance = [$('#acceptance-slider').slider('values', 0), $('#acceptance-slider').slider('values', 1)];
     var population = [$('#undergrad-pop').slider('values', 0), $('#undergrad-pop').slider('values', 1)];
-    if(conference == 'ALL'){
+    if(conference == 'All'){
 
        colleges = _.filter(colleges, function(college){
           if(college.undergradPopulation.length > 3){
