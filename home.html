@@ -81,7 +81,7 @@
 				</p>
 				<div id="undergrad-pop"></div>
 				<br>
-				<button type="button" class="btn btn-default" onclick="filterByState()">Filter</button>
+				<button type="button" id="filterBtn" class="btn btn-default" onclick="filterByState()">Filter</button>
 				<button type="button" class="btn btn-default" onclick="resetDefault()">Clear</button>
 			</div>
 			
@@ -207,6 +207,10 @@ $(function(){
 	$('#sortSchools').change(function() {
 		UpdateColleges();
 	});
+	$('#conferenceDDL').change(function() {
+		enableFilterBtn();
+	});
+	$('#filterBtn').addClass("disabled");
 });
 
 </script>
